@@ -17,7 +17,7 @@
       "channel_bw_hz": 1.0,
       "start_time_mjd": 57086.113194,
       "obs_length": 0.05,
-      "num_times": [100]
+      "num_times": [1000]
     }
   },
 
