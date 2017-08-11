@@ -222,7 +222,7 @@
       "data_volume": 5,
       "group_end": 0,
       "check_filepath_exists": "1",
-      "filepath": "",
+      "filepath": "/BIGDATA/ac_shao_tan_1/OSKAR/daliuge-logical-graphs/OSKAR_and_CASA_Pipelines/imaging_facets.json",
       "dirname": "",
       "key": -7,
       "loc": "-648.3300018310547 164.60000684670888"
