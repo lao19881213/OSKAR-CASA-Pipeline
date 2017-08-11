@@ -116,6 +116,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simulation script.',
                                      epilog='')
     parser.add_argument('config', type=str, nargs='?', help='JSON config file.')
+    parser.add_argument('drop_uid', type=str, nargs='?', help='drop uid.')
+
     args = parser.parse_args()
     if args.config is None:
         parser.print_usage()

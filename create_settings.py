@@ -13,6 +13,7 @@ import math
 
 
 
+
 def dict_to_ini(settings_dict, ini):
     """Convert a dictionary of settings to and OSKAR settings ini file."""
     ini_dir = os.path.dirname(ini)
@@ -79,6 +80,7 @@ if __name__ == '__main__':
                                      epilog='')
     parser.add_argument('config', type=str, nargs='?', help='JSON config file.')
     parser.add_argument('sky_model', type=str, nargs='?', help='sky model file.')
+    parser.add_argument('drop_uid', type=str, nargs='?', help='drop uid.')
 
     args = parser.parse_args()
     #os.system('source /home/lbq/work/OSKAR/bashrc')

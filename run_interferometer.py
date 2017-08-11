@@ -27,6 +27,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simulation script.',
                                      epilog='')
     parser.add_argument('ini_file', type=str, nargs='?', help='INI config file.')
+    parser.add_argument('drop_uid', type=str, nargs='?', help='drop uid.')
+
     args = parser.parse_args()
    
     print(args.ini_file)
