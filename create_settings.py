@@ -43,8 +43,9 @@ def create_settings(settings, sky_file, ms_path, num_times, freq, smearing=True)
 
     s = OrderedDict()
     s['simulator/'] = {
-        'double_precision': 'true',
-        'keep_log_file': 'false'
+        'double_precision': 'false',
+        'keep_log_file': 'false',
+        'max_sources_per_chunk': 50000
     }
     s['sky/'] = {
         'oskar_sky_model/file': sky_file
