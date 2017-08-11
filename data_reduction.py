@@ -26,6 +26,6 @@ if __name__ == "__main__":
     scatter_id = scatter_uid[1] 
 
     casa.run_script(["config_file = '{}'".format(args.config)])
-    casa.run_script(["ID = '{}'".format(scatter_id)])
+    casa.run_script(["NID = '{}'".format(scatter_id)])
 
     casa.run_script_from_file('/BIGDATA/ac_shao_tan_1/OSKAR/OSKAR_CASA/image.py')
