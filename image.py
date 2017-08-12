@@ -40,26 +40,34 @@ def casa_image(ms, rootname, data_column, imsize, fov, ra0, dec0,
     print ('+ Dec0     : %.4f deg' % (dec0))
     print ('-' * 80)
     
-    # Nfacet is the number of facets   NID is the scatter ID (0 to Nfacet-1)
-    
+    # Nfacet is the number of facets   NID is the scatter ID (0 to Nfacet-1)
+    Nfacet = int(Nfacet)
+    NID = int(NID) 
     if (Nfacet>1):
-       M=numpy.sqrt(Nfacet)                  # The number of scatter tasks must be M^2 
-       if (M*M!=Nfacet):
-          print ('No of facets not a square: '+str(Nfacet))
-          exit
-       #
-       nx=numpy.mod(NID,M)                #  Convert from ID number to X, Y coordinate
-       ny=numpy.floor(NID/M)
-       #
-       imsize[0]=imsize[0]/M             # Image is now M^2 smaller
-       imsize[1]=imsize[1]/M
-       dfov=fov[0]/M
-       ra0=(ra0-fov[0]/2)+nx*dfov
-       dec0=(dec0-fov[0]/2)+ny*dfov
-       print ('+ Facet no %d (%d,%d) has RA/DEC %.3f,%0.3f' % (NID, nx,ny,ra0,dec0))
+       M=numpy.sqrt(Nfacet)                  # The number of scatter tasks must be M^2 
+       if (M*M!=Nfacet):
+          print ('No of facets not a square: '+str(Nfacet))
+          exit
+       #
+       nx=numpy.mod(NID,M)                #  Convert from ID number to X, Y coordinate
+       ny=numpy.floor(NID/M)
+       #
+       imsize[0]=imsize[0]/M             # Image is now M^2 smaller
+       imsize[1]=imsize[1]/M
+       dfov=fov[0]/M
+       ra0=(ra0-fov[0]/2)+nx*dfov
+       dec0=(dec0-fov[0]/2)+ny*dfov
+       print ('+ Facet no %d (%d,%d) has RA/DEC %.3f,%0.3f' % (NID, nx,ny,ra0,dec0))
 
     im.open(ms, usescratch=False, compress=False)
-    im.defineimage(nx=imsize[0], ny=imsize[1], cellx='%.12farcsec' % cell[0],
+    #im.defineimage(nx=imsize[0], ny=imsize[1], cellx='%.12farcsec' % cell[0],
+    #               celly='%.12farcsec' % cell[1],
+    #               stokes='I', mode='mfs', step=1, spw=[-1], outframe='',
+    #               veltype='radio',
+    #               phasecenter=me.direction('J2000', '%.14fdeg' % ra0,
+    #                                        '%.14fdeg' % dec0))
+
+    im.defineimage(nx=nx, ny=nx, cellx='%.12farcsec' % cell[0],
                    celly='%.12farcsec' % cell[1],
                    stokes='I', mode='mfs', step=1, spw=[-1], outframe='',
                    veltype='radio',
@@ -127,4 +135,6 @@ if __name__ == "__main__":
         print ('*' * 80)
         print ('  - Finished imaging in %.3fs' % (time.time() - t0))
         print ('*' * 80)
+
+
 
