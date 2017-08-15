@@ -24,7 +24,7 @@ if __name__ == "__main__":
                          timeout = 1200,
                          echo_to_stdout=False) 
     scatter_uid = args.drop_uid.split('/')
-    scatter_id = scatter_uid[1] 
+    scatter_id = scatter_uid[len(scatter_uid)-1] 
 
     casa.run_script(["config_file = '{}'".format(args.config)])
     lg = json.load(open(args.logical_graph))
@@ -33,9 +33,9 @@ if __name__ == "__main__":
            for kw in ['num_of_copies', 'num_of_splits']:
                if kw in jd:
                   num_copy = int(jd[kw])
-              # print(num)
+                  #print(num_copy)
 
-    casa.run_script(["Nfacets = '{}'".format(num_copy)])
-    casa.run_script(["NID = '{}'".format(scatter_id)])
+    casa.run_script(["Nfacet = {}".format(num_copy)])
+    casa.run_script(["NID = {}".format(scatter_id)])
 
-    casa.run_script_from_file('/BIGDATA/ac_shao_tan_1/OSKAR/OSKAR_CASA/image.py')
+    casa.run_script_from_file('/BIGDATA/ac_shao_tan_1/OSKAR/OSKAR_CASA/image.py',timeout = 60000)
